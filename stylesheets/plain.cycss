@@ -1,0 +1,7 @@
+node {
+  label: data(name);
+}
+
+edge {
+  opacity: 0.5;
+}

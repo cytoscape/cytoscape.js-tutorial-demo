@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/font-awesome.css" />
+    <link rel="stylesheet" href="css/open-sans.css" />
+    <link rel="stylesheet" href="css/index.css" />
+
+    <script src="js/cytoscape.min.js"></script>
+    <script src="js/cola.js"></script>
+    <script src="js/cytoscape-cola.js"></script>
+    <script src="js/index.js"></script>
+
+    <title>Cytoscape.js tutorial demo</title>
+  </head>
+
+  <body>
+    <h1>Cytoscape.js tutorial demo</h1>
+
+    <div id="cy" class="main">
+    </div>
+
+    <div class="tools">
+      <h2>Data</h2>
+
+      <p>The <a target="_blank" href="http://js.cytoscape.org/#notation/elements-json">data</a> specifies what should be put in the graph.  Select between one of the example data sets or specify your own custom data in the code.</p>
+
+      <label for="data">Active dataset</label>
+      <select id="data">
+        <option value="social.json" selected>Social</option>
+        <option value="genes.json">Genes</option>
+        <option value="custom.json">Custom</option>
+      </select>
+
+      <h2>Style</h2>
+
+      <p>The <a target="_blank" href="http://js.cytoscape.org/#style">stylesheet</a> is used to specify rules that affect how the elements in the graph look.  Select between one of the example stylesheets or specify your own custom stylesheet in the code.</p>
+
+      <label for="style">Active stylesheet</label>
+      <select id="style">
+        <option value="plain.cycss" selected>Plain</option>
+        <option value="fancy.json">Fancy</option>
+        <option value="custom.cycss">Custom</option>
+      </select>
+
+      <h2>Layout</h2>
+
+      <p>The <a target="_blank" href="http://js.cytoscape.org/#layouts">layout</a> is used to specify how the nodes are positioned in the viewport.  Select between one of the example layouts or specify your own in the code.</p>
+
+      <label for="layout">Active layout</label>
+      <select id="layout">
+        <option value="cola" selected>Force-directed</option>
+        <option value="concentricCentrality">Concentric by centrality</option>
+        <option value="concentricHierarchyCentrality">Hierarchy by centrality</option>
+        <option value="custom">Custom</option>
+      </select>
+      <i id="redo-layout" class="fa fa-refresh action-icon"></i>
+    </div>
+
+    <a class="footer-link" target="_blank" href="http://js.cytoscape.org">js.cytoscape.org</a>
+  </body>
+
+</html>
