@@ -27,6 +27,7 @@ body {
   background: #fff;
   border-left: 1px solid #ddd;
   z-index: 1;
+  overflow: auto;
 }
 
 .footer-link {
