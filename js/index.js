@@ -142,7 +142,7 @@
     $layout.addEventListener('change', applyLayoutFromSelect);
 
     $('#redo-layout').addEventListener('click', applyLayoutFromSelect);
-  })
+  });
 })();
 
 // tooltips
