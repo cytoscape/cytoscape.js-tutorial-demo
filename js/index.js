@@ -142,5 +142,8 @@
     $layout.addEventListener('change', applyLayoutFromSelect);
 
     $('#redo-layout').addEventListener('click', applyLayoutFromSelect);
-  });
+  })
 })();
+
+// tooltips
+$(document).ready(() => $('.tooltip').tooltipster());
