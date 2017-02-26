@@ -79,7 +79,8 @@
   {
     "selector": ".highlighted",
     "style": {
-      "z-index": "999999"
+      "z-index": "999999",
+      "transition-duration": "0.5s"
     }
   },
   {
@@ -94,7 +95,8 @@
       "shadow-color": "#000",
       "shadow-opacity": "0.8",
       "shadow-offset-x": "0px",
-      "shadow-offset-y": "4px"
+      "shadow-offset-y": "4px",
+      "transition-property": "border-width, border-color, border-opacity, background-color, text-outline-color, shadow-blur, shadow-color, shadow-opacity, shadow-offset-x, shadow-offset-y"
     }
   },
   {
@@ -192,6 +194,13 @@
       "line-color": "#888",
       "opacity": 0.4,
       "haystack-radius": 0
+    }
+  },
+  {
+    "selector": "edge.highlighted",
+    "style": {
+      "line-color": "#AAD8FF",
+      "width": "10px"
     }
   }
 ]

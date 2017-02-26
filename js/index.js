@@ -127,6 +127,53 @@
     }
     let applyLayoutFromSelect = () => Promise.resolve( $layout.value ).then( getLayout ).then( applyLayout );
 
+    let $algorithm = $('#algorithm');
+    let getAlgorithm = name => {
+      switch (name) {
+        case 'bfs': return Promise.resolve(cy.elements().bfs.bind(cy.elements())); break;
+        case 'dfs': return Promise.resolve(cy.elements().dfs.bind(cy.elements())); break;
+        case 'none': return Promise.resolve(undefined); break;
+        case 'custom': return Promise.resolve(undefined); break; // replace with algorithm of choice
+        default: return Promise.resolve(undefined);
+      }
+    };
+    let runAlgorithm = (algorithm) => {
+      if (algorithm === undefined) {
+        return Promise.resolve(undefined);
+      } else {
+        return Promise.resolve(algorithm({
+          roots: '#' + cy.nodes()[0].id()
+        }));
+      }
+    }
+    let currentAlgorithm;
+    let animateAlgorithm = (algResults) => {
+      // clear old algorithm results
+      cy.$().removeClass('highlighted');
+      currentAlgorithm = algResults;
+      if (algResults === undefined) {
+        algAnimationRunning = false;
+        return Promise.resolve();
+      }
+      else {
+        let i = 0;
+        return new Promise(resolve => {
+          let highlightNext = () => {
+            if (currentAlgorithm === algResults && i < algResults.path.length) {
+              algResults.path[i].addClass('highlighted');
+              i++;
+              setTimeout(highlightNext, 500);
+            } else {
+              // resolve when finished or when a new algorithm has started visualization
+              resolve();
+            }
+          }
+          highlightNext();
+        });
+      }
+    };
+    let applyAlgorithmFromSelect = () => Promise.resolve( $algorithm.value ).then( getAlgorithm ).then( runAlgorithm ).then( animateAlgorithm );
+
     cy = window.cy = cytoscape({
       container: $('#cy')
     });
@@ -134,7 +181,7 @@
     tryPromise( applyDatasetFromSelect ).then( applyStylesheetFromSelect ).then( applyLayoutFromSelect );
 
     $dataset.addEventListener('change', function(){
-      tryPromise( applyDatasetFromSelect ).then( applyLayoutFromSelect );
+      tryPromise( applyDatasetFromSelect ).then( applyLayoutFromSelect ).then ( applyAlgorithmFromSelect );
     });
 
     $stylesheet.addEventListener('change', applyStylesheetFromSelect);
@@ -142,6 +189,10 @@
     $layout.addEventListener('change', applyLayoutFromSelect);
 
     $('#redo-layout').addEventListener('click', applyLayoutFromSelect);
+
+    $algorithm.addEventListener('change', applyAlgorithmFromSelect);
+
+    $('#redo-algorithm').addEventListener('click', applyAlgorithmFromSelect);
   });
 })();
 

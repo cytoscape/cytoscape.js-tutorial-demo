@@ -64,6 +64,24 @@
         <option value="custom">Custom</option>
       </select>
       <i id="redo-layout" class="fa fa-refresh action-icon tooltip" title="Redo layout"></i>
+
+      <h2>Algorithms</h2>
+
+      <p>Cytoscape.js can analyze data with a variety of <a target="_blank" href="http://js.cytoscape.org/#collection/algorithms">graph theory algorithms</a>, including Breadth-First Search and Depth-First Search.</p>
+
+      <label for="algorithm" class="tooltip u-pull-left" title="Run algorithm">Run algorithm</label>
+      <div class="u-cf"></div>
+      <select id="algorithm">
+        <option value="none" selected>None</option>
+        <option value="bfs">BFS</option>
+        <option value="dfs">DFS</option>
+        <option value="custom">Custom</option>
+      </select>
+      <i id="redo-algorithm" class="fa fa-refresh action-icon tooltip" title="Redo algorithm visualization"></i>
+
+      <h2>Using custom data</h2>
+
+      <p>To use custom data, styles, or layouts, <a target="_blank" href="https://github.com/cytoscape/cytoscape.js-tutorial-demo">clone the repo</a> and modify <code>datasets/custom.json</code>, <code>js/index.js</code>, or <code>stylesheets/custom.cycss</code>.</p>
     </div>
 
     <a class="footer-link" target="_blank" href="http://js.cytoscape.org">js.cytoscape.org</a>
