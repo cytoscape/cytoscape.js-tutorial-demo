@@ -5,3 +5,13 @@ node {
 edge {
   opacity: 0.5;
 }
+
+node.highlighted {
+  border-width: 6px;
+  border-color: #333333;
+}
+
+edge.highlighted {
+  line-color: #008484;
+  width: 9px;
+}
