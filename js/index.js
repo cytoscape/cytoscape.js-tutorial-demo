@@ -128,10 +128,11 @@
     let applyLayoutFromSelect = () => Promise.resolve( $layout.value ).then( getLayout ).then( applyLayout );
 
     let $algorithm = $('#algorithm');
-    let getAlgorithm = name => {
+    let getAlgorithm = (name) => {
       switch (name) {
         case 'bfs': return Promise.resolve(cy.elements().bfs.bind(cy.elements())); break;
         case 'dfs': return Promise.resolve(cy.elements().dfs.bind(cy.elements())); break;
+        case 'astar': return Promise.resolve(cy.elements().aStar.bind(cy.elements())); break;
         case 'none': return Promise.resolve(undefined); break;
         case 'custom': return Promise.resolve(undefined); break; // replace with algorithm of choice
         default: return Promise.resolve(undefined);
@@ -141,9 +142,12 @@
       if (algorithm === undefined) {
         return Promise.resolve(undefined);
       } else {
-        return Promise.resolve(algorithm({
-          roots: '#' + cy.nodes()[0].id()
-        }));
+        let options = {
+          root: '#' + cy.nodes()[0].id(),
+          // astar requires target; goal property is ignored for other algorithms
+          goal: '#' + cy.nodes()[Math.round(Math.random() * (cy.nodes().size() - 1))].id()
+        };
+        return Promise.resolve(algorithm(options));
       }
     }
     let currentAlgorithm;

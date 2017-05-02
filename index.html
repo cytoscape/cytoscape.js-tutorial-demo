@@ -69,12 +69,18 @@
 
       <p>Cytoscape.js can analyze data with a variety of <a target="_blank" href="http://js.cytoscape.org/#collection/algorithms">graph theory algorithms</a>, including Breadth-First Search and Depth-First Search.</p>
 
-      <label for="algorithm" class="tooltip u-pull-left" title="Run algorithm">Run algorithm</label>
+      <label
+        for="algorithm"
+        class="tooltip u-pull-left"
+        title="Run algorithm. Try running A* a few times to see distances to different nodes">
+        Run algorithm
+      </label>
       <div class="u-cf"></div>
       <select id="algorithm">
         <option value="none" selected>None</option>
         <option value="bfs">BFS</option>
         <option value="dfs">DFS</option>
+        <option value="astar">A*</option>
         <option value="custom">Custom</option>
       </select>
       <i id="redo-algorithm" class="fa fa-refresh action-icon tooltip" title="Redo algorithm visualization"></i>
