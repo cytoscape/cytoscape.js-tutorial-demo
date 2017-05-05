@@ -11,6 +11,14 @@ node.highlighted {
   border-color: #333333;
 }
 
+node.start {
+  border-color: #8FDC97;
+}
+
+node.end {
+  border-color: #9F4A54;
+}
+
 edge.highlighted {
   line-color: #008484;
   width: 9px;

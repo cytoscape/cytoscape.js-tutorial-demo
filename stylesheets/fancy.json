@@ -86,9 +86,9 @@
   {
     "selector": "node.highlighted",
     "style": {
-      "border-width": "6px",
+      "border-width": "8px",
       "border-color": "#AAD8FF",
-      "border-opacity": "0.5",
+      "border-opacity": "0.85",
       "background-color": "#394855",
       "text-outline-color": "#394855",
       "shadow-blur": "12px",
@@ -97,6 +97,18 @@
       "shadow-offset-x": "0px",
       "shadow-offset-y": "4px",
       "transition-property": "border-width, border-color, border-opacity, background-color, text-outline-color, shadow-blur, shadow-color, shadow-opacity, shadow-offset-x, shadow-offset-y"
+    }
+  },
+  {
+    "selector": "node.start",
+    "style": {
+      "border-color": "#8FDC97"
+    }
+  },
+  {
+    "selector": "node.end",
+    "style": {
+      "border-color": "#9F4A54"
     }
   },
   {

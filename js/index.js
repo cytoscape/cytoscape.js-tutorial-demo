@@ -153,13 +153,21 @@
     let currentAlgorithm;
     let animateAlgorithm = (algResults) => {
       // clear old algorithm results
-      cy.$().removeClass('highlighted');
+      cy.$().removeClass('highlighted start end');
       currentAlgorithm = algResults;
-      if (algResults === undefined) {
+      if (algResults === undefined || algResults.path === undefined) {
         return Promise.resolve();
       }
       else {
         let i = 0;
+        // for astar, highlight first and final before showing path
+        if (algResults.distance) {
+          // Among DFS, BFS, A*, only A* will have the distance property defined
+          algResults.path.first().addClass('highlighted start');
+          algResults.path.last().addClass('highlighted end');
+          // i is not advanced to 1, so start node is effectively highlighted twice.
+          // this is intentional; creates a short pause between highlighting ends and highlighting the path
+        }
         return new Promise(resolve => {
           let highlightNext = () => {
             if (currentAlgorithm === algResults && i < algResults.path.length) {
