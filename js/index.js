@@ -130,11 +130,11 @@
     let $algorithm = $('#algorithm');
     let getAlgorithm = (name) => {
       switch (name) {
-        case 'bfs': return Promise.resolve(cy.elements().bfs.bind(cy.elements())); break;
-        case 'dfs': return Promise.resolve(cy.elements().dfs.bind(cy.elements())); break;
-        case 'astar': return Promise.resolve(cy.elements().aStar.bind(cy.elements())); break;
-        case 'none': return Promise.resolve(undefined); break;
-        case 'custom': return Promise.resolve(undefined); break; // replace with algorithm of choice
+        case 'bfs': return Promise.resolve(cy.elements().bfs.bind(cy.elements()));
+        case 'dfs': return Promise.resolve(cy.elements().dfs.bind(cy.elements()));
+        case 'astar': return Promise.resolve(cy.elements().aStar.bind(cy.elements()));
+        case 'none': return Promise.resolve(undefined);
+        case 'custom': return Promise.resolve(undefined); // replace with algorithm of choice
         default: return Promise.resolve(undefined);
       }
     };
@@ -156,7 +156,6 @@
       cy.$().removeClass('highlighted');
       currentAlgorithm = algResults;
       if (algResults === undefined) {
-        algAnimationRunning = false;
         return Promise.resolve();
       }
       else {
@@ -200,5 +199,5 @@
   });
 })();
 
-// tooltips
+// tooltips with jQuery
 $(document).ready(() => $('.tooltip').tooltipster());
