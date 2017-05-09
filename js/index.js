@@ -130,11 +130,11 @@
     let $algorithm = $('#algorithm');
     let getAlgorithm = (name) => {
       switch (name) {
-        case 'bfs': return Promise.resolve(cy.elements().bfs.bind(cy.elements())); break;
-        case 'dfs': return Promise.resolve(cy.elements().dfs.bind(cy.elements())); break;
-        case 'astar': return Promise.resolve(cy.elements().aStar.bind(cy.elements())); break;
-        case 'none': return Promise.resolve(undefined); break;
-        case 'custom': return Promise.resolve(undefined); break; // replace with algorithm of choice
+        case 'bfs': return Promise.resolve(cy.elements().bfs.bind(cy.elements()));
+        case 'dfs': return Promise.resolve(cy.elements().dfs.bind(cy.elements()));
+        case 'astar': return Promise.resolve(cy.elements().aStar.bind(cy.elements()));
+        case 'none': return Promise.resolve(undefined);
+        case 'custom': return Promise.resolve(undefined); // replace with algorithm of choice
         default: return Promise.resolve(undefined);
       }
     };
@@ -153,14 +153,21 @@
     let currentAlgorithm;
     let animateAlgorithm = (algResults) => {
       // clear old algorithm results
-      cy.$().removeClass('highlighted');
+      cy.$().removeClass('highlighted start end');
       currentAlgorithm = algResults;
-      if (algResults === undefined) {
-        algAnimationRunning = false;
+      if (algResults === undefined || algResults.path === undefined) {
         return Promise.resolve();
       }
       else {
         let i = 0;
+        // for astar, highlight first and final before showing path
+        if (algResults.distance) {
+          // Among DFS, BFS, A*, only A* will have the distance property defined
+          algResults.path.first().addClass('highlighted start');
+          algResults.path.last().addClass('highlighted end');
+          // i is not advanced to 1, so start node is effectively highlighted twice.
+          // this is intentional; creates a short pause between highlighting ends and highlighting the path
+        }
         return new Promise(resolve => {
           let highlightNext = () => {
             if (currentAlgorithm === algResults && i < algResults.path.length) {
@@ -200,5 +207,5 @@
   });
 })();
 
-// tooltips
+// tooltips with jQuery
 $(document).ready(() => $('.tooltip').tooltipster());
